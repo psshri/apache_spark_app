@@ -1,0 +1,31 @@
+name: Spark CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build and Test
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Java
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'  # Choose the appropriate Java version based on your Spark setup
+
+    - name: Set up Spark
+      run: |
+        wget https://apache.claz.org/spark/spark-3.2.0/spark-3.2.0-bin-hadoop3.2.tgz
+        tar xzf spark-3.2.0-bin-hadoop3.2.tgz
+        export SPARK_HOME=$(pwd)/spark-3.2.0-bin-hadoop3.2
+        export PATH=$SPARK_HOME/bin:$PATH
+
+    - name: Build and Test Spark Code
+      run: |
+        spark-submit --class your.main.ClassName --master local ../../src/word_count.py
