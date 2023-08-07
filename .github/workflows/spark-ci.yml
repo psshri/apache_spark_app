@@ -29,9 +29,9 @@ jobs:
 
     - name: Set up Env variables
       run: |    
-        echo 'export SPARK_HOME=/usr/local/spark' >> ~/.bashrc
-        echo 'export PATH=$SPARK_HOME/bin:$PATH' >> ~/.bashrc
-        source ~/.bashrc
+        echo 'export SPARK_HOME=/usr/local/spark' >> $GITHUB_ENV
+        echo 'export PATH=$SPARK_HOME/bin:$PATH' >> $GITHUB_ENV
+        source $GITHUB_ENV
         spark-submit --version
 
     - name: Build and Test Spark Code
