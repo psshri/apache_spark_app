@@ -33,6 +33,10 @@ jobs:
         echo 'export PATH=$SPARK_HOME/bin:$PATH' >> $GITHUB_ENV
         source $GITHUB_ENV
         spark-submit --version
+    
+    - name: PWD
+      run: |
+        pwd
 
     - name: Build and Test Spark Code
       run: |
