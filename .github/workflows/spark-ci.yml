@@ -37,6 +37,7 @@ jobs:
     - name: PWD
       run: |
         pwd
+        ls
 
     - name: Build and Test Spark Code
       run: |
