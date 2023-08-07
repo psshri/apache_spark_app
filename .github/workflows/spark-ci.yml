@@ -22,7 +22,7 @@ jobs:
 
     - name: Set up Spark
       run: |
-        wget https://www.apache.org/dyn/closer.lua/spark/spark-3.4.1/spark-3.4.1-bin-hadoop3.tgz
+        wget https://dlcdn.apache.org/spark/spark-3.4.1/spark-3.4.1-bin-hadoop3.tgz
         tar xzf spark-3.4.1-bin-hadoop3.tgz
         export SPARK_HOME=$(pwd)/spark-3.4.1-bin-hadoop3
         export PATH=$SPARK_HOME/bin:$PATH
