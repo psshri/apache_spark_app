@@ -28,6 +28,7 @@ WORKDIR /app/Custom_folder
 # Start your Spark application (replace word_count_app.py with your actual app name)
 # CMD ["spark-submit", "--master", "local[*]", "word_count.py"]
 
-CMD ["spark-submit", "word_count.py"]
+# CMD ["spark-submit", "word_count.py"]
+CMD ["sh", "-c", "spark-submit word_count.py 2>&1"]
 
 CMD sleep 600
