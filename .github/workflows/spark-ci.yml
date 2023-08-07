@@ -37,6 +37,8 @@ jobs:
         ls
 
     - name: Build and Test Spark Code
+      env:
+        SPARK_HOME: /usr/local/spark
       run: |
         source $GITHUB_ENV
         spark-submit --version
