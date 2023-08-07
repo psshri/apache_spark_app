@@ -22,9 +22,9 @@ jobs:
 
     - name: Set up Spark
       run: |
-        wget https://dlcdn.apache.org/spark/spark-3.4.1/spark-3.4.1-bin-hadoop3.tgz
-        tar xzf spark-3.4.1-bin-hadoop3.tgz
-        export SPARK_HOME=$(pwd)/spark-3.4.1-bin-hadoop3
+        curl -L -o spark-3.2.0-bin-hadoop3.2.tgz https://downloads.apache.org/spark/spark-3.2.0/spark-3.2.0-bin-hadoop3.2.tgz
+        tar xzf spark-3.2.0-bin-hadoop3.2.tgz
+        export SPARK_HOME=$(pwd)/spark-3.2.0-bin-hadoop3.2
         export PATH=$SPARK_HOME/bin:$PATH
 
     - name: Build and Test Spark Code
