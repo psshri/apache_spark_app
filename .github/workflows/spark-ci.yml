@@ -41,4 +41,4 @@ jobs:
     - name: Build and Test Spark Code
       run: |
         source $GITHUB_ENV
-        spark-submit --class main --master local ../../src/word_count.py
+        spark-submit --class main --master local src/word_count.py
