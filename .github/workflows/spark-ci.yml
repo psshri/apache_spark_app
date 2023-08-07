@@ -32,6 +32,7 @@ jobs:
         echo 'export SPARK_HOME=/usr/local/spark' >> $GITHUB_ENV
         echo 'export PATH=$SPARK_HOME/bin:$PATH' >> $GITHUB_ENV
         source ~/.bashrc
+        spark-submit --version
 
     - name: Build and Test Spark Code
       run: |
