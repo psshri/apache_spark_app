@@ -10,6 +10,10 @@ jobs:
     name: Build and Test
     runs-on: ubuntu-latest
 
+    env:
+      SPARK_HOME: ${{ github.workspace }}/spark-3.4.1-bin-hadoop3
+      PATH: ${{ env.PATH }}:${{ env.SPARK_HOME }}/bin
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -17,26 +21,30 @@ jobs:
     - name: Set up Java
       uses: actions/setup-java@v2
       with:
-        java-version: '11'  # Choose the appropriate Java version based on your Spark setup
+        java-version: '11'  
         distribution: 'adopt'
+
+    # - name: Set up Spark
+    #   run: | 
+    #     wget https://dlcdn.apache.org/spark/spark-3.4.1/spark-3.4.1-bin-hadoop3.tgz
+    #     tar xzf spark-3.4.1-bin-hadoop3.tgz
+    #     export SPARK_HOME=$(pwd)/spark-3.4.1-bin-hadoop3
+    #     export PATH=$PATH:$SPARK_HOME/bin
+    #     spark-submit --version
+
+    # - name: Build and Test Spark Code
+    #   run: |
+    #     export SPARK_HOME=$(pwd)/spark-3.4.1-bin-hadoop3
+    #     export PATH=$PATH:$SPARK_HOME/bin
+    #     cd Custom_folder
+    #     $SPARK_HOME/bin/spark-submit word_count.py   
 
     - name: Set up Spark
       run: | 
         wget https://dlcdn.apache.org/spark/spark-3.4.1/spark-3.4.1-bin-hadoop3.tgz
         tar xzf spark-3.4.1-bin-hadoop3.tgz
-        
-        export SPARK_HOME=$(pwd)/spark-3.4.1-bin-hadoop3
-        export PATH=$PATH:$SPARK_HOME/bin
-        spark-submit --version
-
-    
-    - name: PWD
-      run: |
-        ls
 
     - name: Build and Test Spark Code
       run: |
-        export SPARK_HOME=$(pwd)/spark-3.4.1-bin-hadoop3
-        export PATH=$PATH:$SPARK_HOME/bin
         cd Custom_folder
-        $SPARK_HOME/bin/spark-submit word_count.py
+        $SPARK_HOME/bin/spark-submit word_count.py   
