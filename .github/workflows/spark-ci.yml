@@ -24,10 +24,9 @@ jobs:
       run: | 
         wget https://dlcdn.apache.org/spark/spark-3.4.1/spark-3.4.1-bin-hadoop3.tgz
         tar xzf spark-3.4.1-bin-hadoop3.tgz
-        mv spark-3.4.1-bin-hadoop3 spark
-        sudo mv spark /usr/local/spark
-        export SPARK_HOME=/usr/local/spark
-        export PATH=$SPARK_HOME/bin:$PATH
+        
+        export SPARK_HOME=$(pwd)/spark-3.4.1-bin-hadoop3
+        export PATH=$PATH:$SPARK_HOME/bin
         spark-submit --version
 
     
