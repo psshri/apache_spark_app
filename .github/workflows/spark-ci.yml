@@ -30,6 +30,7 @@ jobs:
         echo 'export PATH=$SPARK_HOME/bin:$PATH' >> $GITHUB_ENV
         source $GITHUB_ENV
         spark-submit --version
+        spark-submit src/word_count.py
     
     - name: PWD
       run: |
