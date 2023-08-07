@@ -29,4 +29,4 @@ jobs:
 
     - name: Build and Test Spark Code
       run: |
-        spark-submit --class your.main.ClassName --master local ../../src/word_count.py
+        spark-submit --class main --master local ../../src/word_count.py
