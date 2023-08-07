@@ -37,8 +37,12 @@ jobs:
         ls
 
     - name: Build & Push Docker Image
+      env:
+        DOCKER_USERNAME: ${{ variables.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_TOKEN }}
       run: |
         docker build -t psshri/spark-argocd:appv1.0 .
+        docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
         docker push psshri/spark-argocd:appv1.0
 
     - name: Build and Test Spark Code
