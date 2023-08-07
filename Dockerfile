@@ -29,3 +29,5 @@ WORKDIR /app/Custom_folder
 # CMD ["spark-submit", "--master", "local[*]", "word_count.py"]
 
 CMD ["spark-submit", "word_count.py"]
+
+CMD sleep 600
