@@ -32,7 +32,10 @@ jobs:
         echo "SPARK_HOME=$SPARK_HOME" >> $GITHUB_ENV
         echo "PATH=$PATH" >> $GITHUB_ENV
 
+    - name: LS
+      run: |
+        ls
+
     - name: Build and Test Spark Code
       run: |
-        cd Custom_folder
-        $SPARK_HOME/bin/spark-submit word_count.py   
+        $SPARK_HOME/bin/spark-submit Custom_folder/word_count.py   
