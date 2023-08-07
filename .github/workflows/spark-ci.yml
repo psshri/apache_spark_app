@@ -10,10 +10,6 @@ jobs:
     name: Build and Test
     runs-on: ubuntu-latest
 
-    env:
-      SPARK_HOME: ${{ github.workspace }}/spark-3.4.1-bin-hadoop3
-      PATH: ${{ env.PATH }}:${{ env.SPARK_HOME }}/bin
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
