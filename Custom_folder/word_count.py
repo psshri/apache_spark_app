@@ -1,39 +1,21 @@
-# import sys
- 
-# from pyspark import SparkContext, SparkConf
- 
-# if __name__ == "__main__":
-	
-# 	# create Spark context with necessary configuration
-# 	sc = SparkContext("local","PySpark Word Count Exmaple")
-	
-# 	# read data from text file and split each line into words
-# 	words = sc.textFile("file.txt").flatMap(lambda line: line.split(" "))
-	
-# 	# count the occurrence of each word
-# 	wordCounts = words.map(lambda word: (word, 1)).reduceByKey(lambda a,b:a +b)
-	
-# 	# save the counts to output
-# 	wordCounts.saveAsTextFile("output")
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import col, explode, split
 
-import sys
-from pyspark import SparkContext, SparkConf
+# Create a SparkSession
+spark = SparkSession.builder.appName("WordCountApp").getOrCreate()
 
-if __name__ == "__main__":
-    # create Spark context with necessary configuration
-    conf = SparkConf().setAppName("PySpark Word Count Example")
-    sc = SparkContext(conf=conf)
+# Read the input text file
+input_file_path = "file.txt"
+text_df = spark.read.text(input_file_path)
 
-    # read data from text file and split each line into words
-    words = sc.textFile("file.txt").flatMap(lambda line: line.split(" "))
+# Split each line into words
+words_df = text_df.select(explode(split(col("value"), " ")).alias("word"))
 
-    # count the occurrence of each word
-    wordCounts = words.map(lambda word: (word, 1)).reduceByKey(lambda a, b: a + b)
+# Group by word and count occurrences
+word_count_df = words_df.groupBy("word").count()
 
-    # collect the counts and print the output
-    results = wordCounts.collect()
-    for (word, count) in results:
-        print(f"{word}: {count}")
+# Print the word count
+word_count_df.show()
 
-    # stop the Spark context
-    sc.stop()
+# Stop the SparkSession
+spark.stop()
