@@ -26,8 +26,8 @@ jobs:
         tar xzf spark-3.4.1-bin-hadoop3.tgz
         mv spark-3.4.1-bin-hadoop3 spark
         sudo mv spark /usr/local/spark
-        echo 'export SPARK_HOME=/usr/local/spark' >> $GITHUB_ENV
-        echo 'export PATH=$SPARK_HOME/bin:$PATH' >> $GITHUB_ENV
+        echo 'SPARK_HOME=/usr/local/spark' >> $GITHUB_ENV
+        echo 'PATH=$SPARK_HOME/bin:$PATH' >> $GITHUB_ENV
         source $GITHUB_ENV
         spark-submit --version
 
@@ -37,9 +37,6 @@ jobs:
         ls
 
     - name: Build and Test Spark Code
-      env:
-        SPARK_HOME: /usr/local/spark
-        PATH: $SPARK_HOME/bin:$PATH
       run: |
         source $GITHUB_ENV
         spark-submit --version
