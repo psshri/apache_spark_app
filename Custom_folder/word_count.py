@@ -5,7 +5,7 @@ from pyspark.sql.functions import col, explode, split
 spark = SparkSession.builder.appName("WordCountApp").getOrCreate()
 
 # Read the input text file
-input_file_path = "Custom_folder/file.txt"
+input_file_path = "file.txt"
 text_df = spark.read.text(input_file_path)
 
 # Split each line into words

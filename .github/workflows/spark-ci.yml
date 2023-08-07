@@ -38,4 +38,5 @@ jobs:
 
     - name: Build and Test Spark Code
       run: |
-        $SPARK_HOME/bin/spark-submit Custom_folder/word_count.py   
+        cd Custom_folder
+        $SPARK_HOME/bin/spark-submit word_count.py   
