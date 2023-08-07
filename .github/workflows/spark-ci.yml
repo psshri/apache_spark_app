@@ -36,5 +36,7 @@ jobs:
 
     - name: Build and Test Spark Code
       run: |
+        export SPARK_HOME=$(pwd)/spark-3.4.1-bin-hadoop3
+        export PATH=$PATH:$SPARK_HOME/bin
         cd Custom_folder
         $SPARK_HOME/bin/spark-submit word_count.py
