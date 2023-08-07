@@ -39,3 +39,4 @@ jobs:
     - name: Build and Test Spark Code
       run: |
         source $GITHUB_ENV
+        spark-submit --version
