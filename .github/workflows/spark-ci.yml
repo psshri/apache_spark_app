@@ -37,8 +37,8 @@ jobs:
         ls
 
     - name: Build Docker Image
-        run: |
-          docker build -t psshri/spark-argocd:appv1.0 .
+      run: |
+        docker build -t psshri/spark-argocd:appv1.0 .
 
     - name: Build and Test Spark Code
       run: |
