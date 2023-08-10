@@ -5,7 +5,8 @@ FROM apache/spark
 WORKDIR /app
 
 # Copy the contents of the Custom_folder to the container's working directory
-COPY Custom_folder /app/Custom_folder
+# COPY Custom_folder /app/Custom_folder
+COPY Custom_folder /app
 
 # Set the environment variables for Spark and Java
 ENV SPARK_HOME /opt/spark
@@ -19,7 +20,8 @@ RUN apt-get update && \
 
 ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64
 
-WORKDIR /app/Custom_folder
+# WORKDIR /app/Custom_folder
+WORKDIR /app
 
 CMD ["sh", "-c", "spark-submit word_count.py 2>&1"]
 
