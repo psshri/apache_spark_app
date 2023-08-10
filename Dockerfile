@@ -8,6 +8,8 @@ WORKDIR /app
 # COPY Custom_folder /app
 COPY Custom_folder /app
 
+RUN ls
+
 RUN pip3 install -r /app/Custom_folder/requirements.txt
 
 # Set the environment variables for Spark and Java
