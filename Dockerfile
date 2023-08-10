@@ -10,7 +10,7 @@ COPY Custom_folder /app
 
 RUN ls
 
-RUN pip3 install -r /app/Custom_folder/requirements.txt
+RUN pip3 install -r /app/requirements.txt
 
 # Set the environment variables for Spark and Java
 ENV SPARK_HOME /opt/spark
