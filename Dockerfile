@@ -4,6 +4,8 @@ FROM apache/spark
 # Set the working directory inside the container
 WORKDIR /app
 
+USER root
+
 # Copy the contents of the Custom_folder to the container's working directory
 # COPY Custom_folder /app
 COPY Custom_folder /app
@@ -15,8 +17,6 @@ RUN pip3 install -r /app/requirements.txt
 # Set the environment variables for Spark and Java
 ENV SPARK_HOME /opt/spark
 ENV PATH $PATH:$SPARK_HOME/bin
-
-USER root
 
 RUN apt-get update && \
     apt-get install -y openjdk-11-jdk-headless && \
