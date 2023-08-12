@@ -11,7 +11,7 @@ spec:
     path: k8s-config
   destination:
     server: https://kubernetes.default.svc
-    namespace: myapp
+    namespace: spark
 
   syncPolicy:
     syncOptions: 
