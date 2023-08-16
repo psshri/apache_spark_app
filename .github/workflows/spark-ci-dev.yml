@@ -4,10 +4,6 @@ on:
   push:
     branches:
       - main
-    # paths-ignore:
-    #   - 'argocd-application.yaml'
-    #   - 'spark/**'
-    #   - 'Dockerfile'
     paths:
       - 'Custom_folder/**'
 
@@ -43,9 +39,9 @@ jobs:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
       run: |
-        docker build -t psshri/spark-argocd:appv3.1 .
+        docker build -t psshri/spark-argocd-dev:appv3.1 .
         docker login -u "$DOCKER_USERNAME" -p "$DOCKER_TOKEN"
-        docker push psshri/spark-argocd:appv3.1
+        docker push psshri/spark-argocd-dev:appv3.1
     
     - name: Build and Test Spart code
       run: |
