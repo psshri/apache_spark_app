@@ -4,9 +4,12 @@ on:
   push:
     branches:
       - main
-    paths-ignore:
-      - 'k8s-config/**'
-      - 'argocd-application.yaml'
+    # paths-ignore:
+    #   - 'argocd-application.yaml'
+    #   - 'spark/**'
+    #   - 'Dockerfile'
+    paths:
+      - 'Custom_folder/**'
 
 jobs:
   build:
