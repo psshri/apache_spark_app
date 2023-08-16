@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  name: nginx
+spec:
+  controller: k8s.io/ingress-nginx
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: cassandra-web-ingress
+  namespace: default
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: "psshri.com" 
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: spark-master-svc
+                port:
+                  number: 80
