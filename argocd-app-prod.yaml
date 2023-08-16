@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: spark-argo-app-dev
+  name: spark-argo-app-prod
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/psshri/apache_spark_app.git
-    targetRevision: main
+    targetRevision: prod
     path: spark
   destination:
     server: https://kubernetes.default.svc
-    namespace: spark-dev
+    namespace: spark-prod
 
   syncPolicy:
     syncOptions: 
