@@ -43,7 +43,11 @@ jobs:
         docker build -t psshri/spark-argocd:appv3.1 .
         docker login -u "$DOCKER_USERNAME" -p "$DOCKER_TOKEN"
         docker push psshri/spark-argocd:appv3.1
-
+    
+    - name: Build and Test Spart code
+      run: |
+        cd Custom_folder
+        $SPARK_HOME/bin/spark-submit word_count.py
 
 #     - name: Build & Push Docker Image
 #       env:
