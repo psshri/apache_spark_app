@@ -39,6 +39,8 @@ jobs:
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
+      run: |
+        docker build -t psshri/spark-argocd:appv3.1 .
 
 
 #     - name: Build & Push Docker Image
