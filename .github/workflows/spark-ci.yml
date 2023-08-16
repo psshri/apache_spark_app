@@ -34,7 +34,7 @@ jobs:
         export PATH=$PATH:$SPARK_HOME/bin
         echo "SPARK_HOME=$SPARK_HOME" >> $GITHUB_ENV
         echo "PATH=$PATH" >> $GITHUB_ENV
-        
+
     - name: Build & Push Docker Image
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
