@@ -48,18 +48,3 @@ jobs:
       run: |
         cd Custom_folder
         $SPARK_HOME/bin/spark-submit word_count.py
-
-#     - name: Build & Push Docker Image
-#       env:
-#         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-#         DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
-#       run: |
-# #        docker build -t sparkapp:v1.0 .    
-#         docker build -t psshri/spark-argocd:appv3.1 .
-#         docker login -u "$DOCKER_USERNAME" -p "$DOCKER_TOKEN"
-#         docker push psshri/spark-argocd:appv3.1
-
-# #     - name: Build and Test Spark Code
-# #       run: |
-# #         cd Custom_folder
-# #         $SPARK_HOME/bin/spark-submit word_count.py   
