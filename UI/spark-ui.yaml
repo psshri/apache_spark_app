@@ -20,6 +20,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: spark-master-svc
+                name: spark-argo-app-dev-master-svc #change this name if spark is not deployed with argocd
                 port:
                   number: 80
