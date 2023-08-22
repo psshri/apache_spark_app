@@ -51,6 +51,10 @@ jobs:
         docker build -t psshri/spark-argocd-dev:appv1.$IMAGE_TAG .
         docker login -u "$DOCKER_USERNAME" -p "$DOCKER_TOKEN"
         docker push psshri/spark-argocd-dev:appv1.$IMAGE_TAG
+
+    - name: Update image tag for the next run
+      run: |
+        echo $TAG > Custom_folder/image_tag.txt
     
     - name: Build and Test Spart code
       run: |
