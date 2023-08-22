@@ -97,7 +97,7 @@ image:
   # repository: bitnami/spark
   repository: psshri/spark-argocd-dev
   # tag: 3.4.1-debian-11-r28
-  tag: appv1.19
+  tag: appv1.18
   digest: ""
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
