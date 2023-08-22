@@ -33,15 +33,29 @@ jobs:
         export PATH=$PATH:$SPARK_HOME/bin
         echo "SPARK_HOME=$SPARK_HOME" >> $GITHUB_ENV
         echo "PATH=$PATH" >> $GITHUB_ENV
-    
+
+    - name: Get the current image tag
+      id: get_image_tag
+      run: echo "::set-output name=tag::$(cat image_tag.txt)"
+
+    - name: Increment the image tag
+      id: increment_tag
+      run: echo "::set-output name=tag::$(($(cat image_tag.txt) + 1))" > image_tag.txt
+
     - name: Build & Push Docker Image
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
       run: |
-        docker build -t psshri/spark-argocd-dev:appv3.1 .
+        IMAGE_TAG=${{ steps.increment_tag.outputs.tag }}
+        docker build -t psshri/spark-argocd-dev:appv1.$IMAGE_TAG .
         docker login -u "$DOCKER_USERNAME" -p "$DOCKER_TOKEN"
-        docker push psshri/spark-argocd-dev:appv3.1
+        docker push psshri/spark-argocd-dev:appv1.$IMAGE_TAG
+
+    - name: Update image tag for the next run
+      run: |
+        IMAGE_TAG=${{ steps.increment_tag.outputs.tag }}
+        echo $IMAGE_TAG > image_tag.txt
     
     - name: Build and Test Spart code
       run: |
