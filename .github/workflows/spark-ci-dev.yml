@@ -54,7 +54,7 @@ jobs:
 
     - name: Update image tag for the next run
       run: |
-        echo $TAG > Custom_folder/image_tag.txt
+        echo "TAG=${{ env.TAG }}" > Custom_folder/image_tag.txt
         echo $TAG
     
     - name: Build and Test Spart code
