@@ -38,8 +38,12 @@ jobs:
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
-        IMAGE_TAG: appv1.${{ github.run_number }}
       run: |
-        docker build -t psshri/spark-argocd-dev:$IMAGE_TAG .
+        docker build -t psshri/spark-argocd-dev:latest .
         docker login -u "$DOCKER_USERNAME" -p "$DOCKER_TOKEN"
-        docker push psshri/spark-argocd-dev:$IMAGE_TAG
+        docker push psshri/spark-argocd-dev:latest
+    
+    - name: Build and Test Spart code
+      run: |
+        cd Custom_folder
+        $SPARK_HOME/bin/spark-submit word_count.py
