@@ -44,11 +44,11 @@ jobs:
 
     - name: Get the current image tag
       id: get_image_tag
-      run: echo "::set-output name=tag::$(cat image_tag.txt)"
+      run: echo "::set-output name=tag::$(cat Custom_folder/image_tag.txt)"
 
     - name: Increment the image tag
       id: increment_tag
-      run: echo "::set-output name=tag::$(($(cat image_tag.txt) + 1))" > image_tag.txt
+      run: echo "::set-output name=tag::$(($(cat Custom_folder/image_tag.txt) + 1))" > Custom_folder/image_tag.txt
 
     - name: Build & Push Docker Image
       env:
@@ -63,7 +63,7 @@ jobs:
     - name: Update image tag for the next run
       run: |
         IMAGE_TAG=${{ steps.increment_tag.outputs.tag }}
-        echo $IMAGE_TAG > image_tag.txt
+        echo $IMAGE_TAG > Custom_folder/image_tag.txt
     
     - name: Build and Test Spart code
       run: |
