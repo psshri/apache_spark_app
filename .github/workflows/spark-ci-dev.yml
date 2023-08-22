@@ -46,6 +46,10 @@ jobs:
       id: get_image_tag
       run: echo "::set-output name=tag::$(cat Custom_folder/image_tag.txt)"
 
+    - name: cat image_tag
+      run: |
+        cat Custom_folder/image_tag.txt
+
     - name: Increment the image tag
       id: increment_tag
       run: echo "::set-output name=tag::$(($(cat Custom_folder/image_tag.txt) + 1))" > Custom_folder/image_tag.txt
