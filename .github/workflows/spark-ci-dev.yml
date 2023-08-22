@@ -56,6 +56,10 @@ jobs:
       run: |
         echo "TAG=${{ env.TAG }}" > Custom_folder/image_tag.txt
         echo $TAG
+
+    - name: cat image_tag
+      run: |
+        cat Custom_folder/image_tag.txt
     
     - name: Build and Test Spart code
       run: |
