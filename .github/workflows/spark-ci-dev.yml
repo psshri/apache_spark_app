@@ -34,6 +34,14 @@ jobs:
         echo "SPARK_HOME=$SPARK_HOME" >> $GITHUB_ENV
         echo "PATH=$PATH" >> $GITHUB_ENV
 
+    - name: ls
+      run: |
+        ls
+
+    - name: pwd
+      run: |
+        pwd
+
     - name: Get the current image tag
       id: get_image_tag
       run: echo "::set-output name=tag::$(cat image_tag.txt)"
