@@ -36,14 +36,9 @@ jobs:
 
     - name: Build & Push Docker Image
       env:
-        # DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-        # DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
         PACKAGE_WRITE: ${{ secrets.PACKAGE_WRITE }}
         GITHUB_USERNAME: ${{ secrets.USERNAME_GITHUB }}
       run: |
-#        docker build -t psshri/spark-argocd-dev:latest .
-#        docker login -u "$DOCKER_USERNAME" -p "$DOCKER_TOKEN"
-#        docker push psshri/spark-argocd-dev:latest
         docker build -t ghcr.io/psshri/sparkapp-dev:latest .
         docker login ghcr.io -u "$GITHUB_USERNAME" -p "$PACKAGE_WRITE"
         docker push ghcr.io/psshri/sparkapp-dev:latest
