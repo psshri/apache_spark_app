@@ -93,17 +93,17 @@ diagnosticMode:
 ## @param image.debug Enable image debug mode
 ##
 image:
-  registry: docker.io
+  registry: ghcr.io
   # repository: bitnami/spark
-  repository: psshri/spark-argocd-dev
+  repository: psshri/sparkapp-dev
   # tag: 3.4.1-debian-11-r28
-  tag: appv1.18
+  tag: latest
   digest: ""
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: https://kubernetes.io/docs/user-guide/images/#pre-pulling-images
   ##
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   ## Optionally specify an array of imagePullSecrets.
   ## Secrets must be manually created in the namespace.
   ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
@@ -111,7 +111,7 @@ image:
   ## pullSecrets:
   ##   - myRegistryKeySecretName
   ##
-  pullSecrets: []
+  pullSecrets: [github-registry-secret]
   ## Set to true if you would like to see extra information on logs
   ## It turns BASH and/or NAMI debugging in the image
   ##

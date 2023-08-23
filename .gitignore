@@ -2,3 +2,5 @@ notes.md
 output
 spark-7.1.2.tgz
 k8s-config1
+config.json
+secret.yaml
